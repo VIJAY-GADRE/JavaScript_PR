@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exp No. 3</title>
+    </head>
+
+    <body style="text-align: center;">
+        <h2>String Operations</h2>
+
+        <label for="inputString">Enter Input String: </label>
+        <input type="text" id="inputString" placeholder="Input String">
+
+        <p>Reversed String is: <span id="stringRev"></span></p>
+        <button onclick="revString()">Reverse String</button>
+        <br>
+
+        <p>Is the String Palindrome: <span id="isPalindrome"></span></p>
+        <button onclick="checkPalindrome()">Palindrome Check</button>
+        <br>
+        <br>
+
+        <label for="char2replace">Enter the Character to Replace: </label>
+        <input type="text" id="char2replace" placeholder="Character to Replace">
+
+        <label for="newChar">Enter the New Character: </label>
+        <input type="text" id="newChar" placeholder="New Character">
+
+        <p>Modified String is: <span id="modifiedString"></span></p>
+        <button onclick="charReplace()">Replace Character</button>
+
+        <script>
+            function revString() {
+                var inputString = document.getElementById("inputString").value;
+                var revString = inputString.split('').reverse().join('');
+                document.getElementById("stringRev").innerHTML = revString;
+            }
+
+            function checkPalindrome() {
+                var inputString = document.getElementById("inputString").value;
+                var revString = inputString.split('').reverse().join('');
+                if (inputString === revString) {
+                    document.getElementById("isPalindrome").innerHTML = "Yes";
+                } else {
+                    document.getElementById("isPalindrome").innerHTML = "No";
+                }
+            }
+
+            function charReplace() {
+                var inputString = document.getElementById("inputString").value;
+                var char2replace = document.getElementById("char2replace").value;
+                var newChar = document.getElementById("newChar").value;
+
+                var modifiedString = inputString.replaceAll(char2replace, newChar);
+                if (inputString === modifiedString) {
+                    document.getElementById("modifiedString").innerHTML = "Character Not Found"
+                } else {
+                    document.getElementById("modifiedString").innerHTML = modifiedString;
+                }
+            }
+        </script>
+    </body>
+</html>

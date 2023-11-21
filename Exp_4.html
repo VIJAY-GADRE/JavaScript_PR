@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exp No. 4</title>
+    </head>
+
+    <body style="text-align: center;">
+        <h2>String Comparisons</h2>
+        <label for="string1">Enter String 1: </label>
+        <input type="text" id="string1" placeholder="String 1">
+
+        <label for="string2">Enter String 2: </label>
+        <input type="text" id="string2" placeholder="String 2">
+
+        <p>Are the Strings Equal using Strict Equality: <span id="strictEqualityCheck"></span></p>
+        <button onclick="strictEquality()">Strict Equality</button>
+
+        <p>Are the String Equal using Locale Compare: <span id="localeCompareCheck"></span></p>
+        <button onclick="localeCompareStrings()">Locale Compare</button>
+
+        <p>Are the Strings Equal in Length: <span id="lengthCheck"></span></p>
+        <button onclick="lengthCompare()">Length Compare</button>
+
+        <script>
+            function strictEquality() {
+                var string1 = document.getElementById("string1").value;
+                var string2 = document.getElementById("string2").value;
+                if (string1 === string2){
+                    document.getElementById("strictEqualityCheck").innerHTML = "Yes";
+                } else {
+                    document.getElementById("strictEqualityCheck").innerHTML = "No";
+                }
+            }
+
+            function localeCompareStrings() {
+                var string1 = document.getElementById("string1").value;
+                var string2 = document.getElementById("string2").value;
+                if (string1.localeCompare(string2) === 0) {
+                    document.getElementById("localeCompareCheck").innerHTML = "Yes";
+                } else if (string1.localeCompare(string2) < 0) {
+                    document.getElementById("localeCompareCheck").innerHTML = "String 1 comes before String 2";
+                } else {
+                    document.getElementById("localeCompareCheck").innerHTML = "String 1 comes after String 2";
+                }
+            }
+
+            function lengthCompare() {
+                var string1 = document.getElementById("string1").value;
+                var string2 = document.getElementById("string2").value;
+                if (string1.length === string2.length) {
+                    document.getElementById("lengthCheck").innerHTML = "Yes";
+                } else {
+                    document.getElementById("lengthCheck").innerHTML = "No";
+                }
+            }
+        </script>
+    </body>
+</html>

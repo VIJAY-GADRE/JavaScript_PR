@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exp No. 5</title>
+    </head>
+
+    <body style="text-align: center;">
+        <h2>Countdown Timer</h2>
+        <label for="datetime">Enter Date and Time: </label>
+        <input type="datetime-local" id="datetime">
+        <button onclick="startCountDownTimer()">Start Countdown</button>
+        <button onclick="resetTimer()">Reset Countdown</button>
+        <p id="displayTime"></p>
+
+        <script>
+            var countdownInterval;
+
+            function startCountDownTimer() {
+                clearInterval(countdownInterval);
+                var inputDate = new Date(document.getElementById("datetime").value).getTime();
+
+                countdownInterval = setInterval(function() {
+                    var now = new Date().getTime();
+                    var timeRemaining = inputDate - now;
+                    
+                    var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                    document.getElementById("displayTime").innerHTML = days + " D " + hours + " hrs " + minutes + " mins " + seconds + " secs ";
+                    if (timeRemaining <= 0) {
+                        clearInterval(countdownInterval);
+                        document.getElementById("displayTime").innerHTML = "Time has Passed...";
+                    }
+                }, 1000)
+            }
+
+            function resetTimer() {
+                clearInterval(countdownInterval);
+                document.getElementById("datetime").value = "";
+                document.getElementById("displayTime").innerHTML = "";
+            }
+        </script>
+    </body>
+</html>

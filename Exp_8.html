@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exp No. 8</title>
+    </head>
+
+    <body style="text-align: center;" id="events">
+        <h2>Event Handler Examples</h2>
+        <div>
+            <h4>On Mouse Over and On Mouse Out Event</h4>
+            <button onmouseover="mouseOver()" onmouseout="mouseOut()">Hover Over Me</button>
+        </div>
+
+        <div>
+            <h4>On Focus and On Blur Event</h4>
+            <input type="text" onfocus="FocusElem()" onblur="mouseOut()">
+        </div>
+
+        <script>
+            function mouseOver() {
+                document.getElementById("events").style.backgroundColor = "#ffd731";
+            }
+
+            function mouseOut() {
+                document.getElementById("events").style.backgroundColor = "#7d74a8";
+            }
+
+            function FocusElem() {
+                document.getElementById("events").style.backgroundColor = "#216974";
+            }
+        </script>
+    </body>
+</html>

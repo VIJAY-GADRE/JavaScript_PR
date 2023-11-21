@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exp No. 6</title>
+    </head>
+
+    <body style="text-align: center;">
+        <h2>Array Operations</h2>
+        <label for="length">Enter the Length of Array: </label>
+        <input type="number" id="length" placeholder="Length of Array">
+        <br> <br>
+
+        <label for="arrayElements">Enter the Array Elements (Comma-Separated): </label>
+        <input type="text" id="arrayElements" placeholder="Array Elements Comma-Separated">
+        <br> <br>
+
+        <button onclick="createArray()">Create Array</button>
+        <br> <br>
+
+        <label for="element2remove">Enter the element to remove: </label>
+        <input type="text" id="element2remove" placeholder="Element to Remove">
+        <br> <br>
+
+        <button onclick="removeElem()">Remove Element</button>
+        <br> <br>
+
+        <label for="element2check">Enter the element to check: </label>
+        <input type="text" id="element2check" placeholder="Element to Check">
+        <br> <br>
+
+        <button onclick="checkElem()">Check Element</button>
+
+        <p>Array Elements are: <span id="arrayElementsDisplay"></span></p>
+        <p>Is the Element in the Array: <span id="checkElementDisplay"></span></p>
+        <br>
+
+        <button onclick="resetArray()">Reset</button>
+
+        
+        <script>
+            var inputArray = [];
+
+            function createArray() {
+                var length = parseInt(document.getElementById("length").value);
+                var inputElements = document.getElementById("arrayElements").value;
+                var elements = inputElements.split(",").map(function(item) { return item.trim(); });
+
+                if (elements.length === length) {
+                    inputArray = elements
+                    document.getElementById("arrayElementsDisplay").innerHTML = inputArray.join(", ");
+                } else {
+                    document.getElementById("arrayElementsDisplay").innerHTML = "Elements Exceed specified lenght...";
+                }
+            }
+
+            function removeElem() {
+                var element2remove = document.getElementById("element2remove").value;
+                var index = inputArray.indexOf(element2remove);
+                if (index !== -1) {
+                    inputArray.splice(index, 1);
+                    document.getElementById("arrayElementsDisplay").innerHTML = inputArray.join(", ");
+                } else {
+                    document.getElementById("arrayElementsDisplay").innerHTML = "Element Not Found in the Array...";
+                }
+            }
+
+            function checkElem() {
+                var element2check = document.getElementById("element2check").value;
+                var index = inputArray.indexOf(element2check);
+                if (index !== -1) {
+                    document.getElementById("checkElementDisplay").innerHTML = "Element found at index: " + index;
+                } else {
+                    document.getElementById("checkElementDisplay").innerHTML = "Element not found in array..."
+                }
+            }
+
+            function resetArray() {
+                document.getElementById("length").value = "";
+                document.getElementById("arrayElements").value = "";
+                document.getElementById("element2remove").value = "";
+                document.getElementById("element2check").value = "";
+                document.getElementById("arrayElementsDisplay").innerHTML = " ";
+                document.getElementById("checkElementDisplay").innerHTML = " ";
+                inputArray = [];
+            }
+        </script>
+    </body>
+</html>

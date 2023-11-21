@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exp No. 1</title>
+    </head>
+    <body style="text-align: center;">
+        <h2>Calculate Area of Triangle</h2>
+        <label for="side1">Enter Side 1:</label>
+        <input type="number" id="side1" placeholder="Side 1">
+
+        <label for="side2">Enter Side 2:</label>
+        <input type="number" id="side2" placeholder="Side 2">
+
+        <label for="side3">Enter Side 3:</label>
+        <input type="number" id="side3" placeholder="Side 3">
+        <br>
+
+        <button onclick="calculateTriangleArea()">Submit</button>
+        <p>Area of Triangle is: <span id="triangleArea"></span></p>
+        <br>
+
+        <h2>Calculate Area of Circle</h2>
+        <label for="radius">Enter the radius</label>
+        <input type="number" id="radius" placeholder="Radius">
+        <br>
+
+        <button onclick="calculateCircleArea()">Submit</button>
+        <p>Area of Circle is: <span id="circleArea"></span></p>
+        <br>
+
+        <h2>Calculate Rectangle Area</h2>
+        <label for="len">Enter the Length</label>
+        <input type="number" id="len" placeholder="Length">
+
+        <label for="bre">Enter the Breadth</label>
+        <input type="number" id="bre" placeholder="Breadth">
+        <br>
+
+        <button onclick="calculateRectangleArea()">Submit</button>
+        <p>Area of Rectangle is: <span id="rectangleArea"></span></p>
+
+
+        <script>
+            function calculateTriangleArea(){
+                var side1 = parseInt(document.getElementById("side1").value);
+                var side2 = parseInt(document.getElementById("side2").value);
+                var side3 = parseInt(document.getElementById("side3").value);
+                if (side1 <= 0 || side2 <= 0 || side3 <= 0 || (side1 + side2) <= side3 || (side1 + side3) <= side2 || (side2 + side3) <= side1){
+                    document.getElementById("triangleArea").innerHTML = "Invalid Input";
+                } else {
+                    var sides = (side1 + side2 + side3) / 2;
+                    var area = Math.sqrt(sides * (sides - side1) * (sides - side2) * (sides - side3));
+                    document.getElementById("triangleArea").innerHTML = area.toFixed(2) + " sq. units";
+                }
+            }
+
+            function calculateCircleArea() {
+                var radius = parseInt(document.getElementById("radius").value);
+                if (radius <= 0) {
+                    document.getElementById("circleArea").innerHTML = "Invalid Input";
+                } else {
+                    var area = Math.PI * radius * radius;
+                    document.getElementById("circleArea").innerHTML = area.toFixed(2) + " sq. units";
+                }
+            }
+
+            function calculateRectangleArea() {
+                var len = parseInt(document.getElementById("len").value);
+                var bre = parseInt(document.getElementById("bre").value);
+                if ((len <= 0) || (bre <= 0)) {
+                    document.getElementById("rectangleArea").innerHTML = "Invalid Input";
+                } else {
+                    var area = len * bre;
+                    document.getElementById("rectangleArea").innerHTML = area.toFixed(2) + " sq. units";
+                }
+            }
+        </script>
+    </body>
+</html>

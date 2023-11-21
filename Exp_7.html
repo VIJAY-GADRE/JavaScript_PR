@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exp No. 7</title>
+    </head>
+
+    <body style="text-align: center;">
+        <h2>Check an Object is an Array</h2>
+        <label for="length">Enter the length: </label>
+        <input type="number" id="length" placeholder="Length">
+        <br> <br>
+
+        <label for="inputElement">Enter the element in JSON format to append: </label>
+        <input type="text" id="inputElement" placeholder="Element to Append">
+        <br> <br>
+
+        <button onclick="appendElement()">Append Element</button>
+        <br> <br>
+
+        <label for="checkObjisArrayIndex">Enter the index to check object is an array: </label>
+        <input type="number" id="checkObjisArrayIndex" placeholder="Index to Check">
+        <br> <br>
+
+        <button onclick="checkObjisArray()">Check if Object is an Array</button>
+
+        <p>Is the Object an Array: <span id="checkObjisArrayDisplay"></span> </p>
+        <p>Array Output: <span id="displayArray"></span></p>
+
+        <button onclick="reset()">Reset</button>
+
+        <script>
+            var inputArray = [];
+
+            function appendElement() {
+                var length = parseInt(document.getElementById("length").value);
+                var inputElement = document.getElementById("inputElement").value;
+                try {
+                    var element = JSON.parse(inputElement);
+                    if (inputArray.length < length) {
+                        inputArray.push(element);
+                        document.getElementById("displayArray").innerHTML = JSON.stringify(inputArray);
+                    } else {
+                        document.getElementById("displayArray").innerHTML = "Array is Full";
+                    }
+                } catch (error) {
+                    document.getElementById("displayArray").innerHTML = "Invalid Object Type";
+                }
+            }
+
+            function checkObjisArray() {
+                var objIndex = parseInt(document.getElementById("checkObjisArrayIndex").value);
+                if (objIndex >= 0 && objIndex < inputArray.length) {
+                    if (Array.isArray(inputArray[objIndex])) {
+                        document.getElementById("checkObjisArrayDisplay").innerHTML = "Yes, it's an Array.";
+                    } else {
+                        document.getElementById("checkObjisArrayDisplay").innerHTML = "No, it is not an Array."
+                    }
+                }
+            }
+
+            function reset() {
+                document.getElementById("length").value = "";
+                document.getElementById("inputElement").value = "";
+                document.getElementById("checkObjisArrayIndex").value = "";
+                document.getElementById("displayArray").innerHTML = '';
+                document.getElementById("checkObjisArrayDisplay").innerHTML = '';
+                inputArray = [];
+            }
+        </script>
+    </body>
+</html>
